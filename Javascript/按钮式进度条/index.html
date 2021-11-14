@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>按钮式进度条</title>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.3/css/all.css" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: aliceblue;
+        }
+
+        .button {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 160px;
+            height: 40px;
+            color: black;
+            background: white;
+            border-radius: 10px;
+            margin: 16px auto;
+            font-size: 18px;
+            text-decoration: none;
+            overflow: hidden;
+        }
+
+        .progress {
+            content: '';
+            position: absolute;
+            top: 90%;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #4776E6;
+            background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);
+            background: linear-gradient(to right, #8E54E9, #4776E6);
+            transition: all 4s;
+        }
+
+        /* 提升文字层级避免被覆盖 */
+        .text {
+            z-index: 10;
+        }
+
+        /* 图标也一样 */
+        i {
+            margin: 0 8px 0 0;
+            font-size: 16px;
+            z-index: 10;
+        }
+
+        /* 给图标加上动画 */
+        @keyframes tapDownload {
+            0% {
+                transform: translateY(2px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        .fa-arrow-down {
+            animation: tapDownload 1s ease infinite;
+        }
+
+        /* 下载中~ */
+        @keyframes downloading {
+            0% {
+                transform: scale(.7);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .fa-download {
+            animation: downloading 1s ease infinite alternate-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="button">
+        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+        <span class="text">download</span>
+        <span class="progress"></span>
+    </div>
+
+    <script>
+        const btn = document.querySelector('.button');
+        const pr = document.querySelector('.progress');
+        const text = document.querySelector('.text');
+        const icon = document.querySelector('.fa');
+        // 添加监听动画
+        btn.addEventListener('click', () =>
+        {
+            if (text.innerText === 'downloaded') {
+                text.innerText = 'download';
+                icon.style.color = 'black';
+                text.innerText = 'download';
+                icon.classList.remove('fa-check');
+                icon.classList.add('fa-arrow-down');
+                text.style.color = 'black';
+                pr.style.left = '-100%';
+                pr.style.top = '90%';
+                pr.style.transitionDuration = '0s';
+            } else {
+                pr.style.left = '0';
+                icon.classList.remove('fa-arrow-down');
+                icon.classList.add('fa-download');
+                text.innerText = 'downloading';
+                pr.style.transitionDuration = '4s';
+                // 往上的效果，点击后才执行
+                setTimeout(() =>
+                {
+                    pr.style.top = '0';
+                    pr.style.transitionDuration = '1s';
+                    text.innerText = 'downloaded';
+                    icon.style.color = 'white';
+                    text.style.color = 'white';
+                    icon.classList.remove('fa-download');
+                    icon.classList.add('fa-check');
+
+                }, 4000);
+            }
+        });
+
+    </script>
+</body>
+
+</html>

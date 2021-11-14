@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>商品展示demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      background-color: #f5f5f5;
+    }
+    
+    .box {
+      width: 234px;
+      height: 260px;
+      padding: 20 0px;
+      background-color: #fff;
+      margin: 100px auto;
+    }
+    
+    .box:hover {
+      box-shadow: 5px 10px 20px 10px rgba(0, 0, 0, .3);
+    }
+    /* img属于行内&替换元素 */
+    
+    .box img {
+      display: block;
+      width: 160px;
+      height: 160px;
+      /* text-align: center; */
+      margin: 0 auto;
+    }
+    
+    .title {
+      margin: 0 10px 2px 10px;
+      font-weight: 400;
+      text-align: center;
+    }
+    
+    .tag {
+      display: block;
+      font-size: 12px;
+      height: 18px;
+      color: #b0b0b0;
+      text-align: center;
+      margin: 0 10px 10px 10px;
+    }
+    
+    .price {
+      display: block;
+      margin: 0 10px 14px 10px;
+      text-align: center;
+    }
+    
+    .newPrice {
+      font-size: 14px;
+      color: #ff6700;
+    }
+    
+    .oldPrice {
+      font-size: 14px;
+      color: #b0b0b0;
+      text-decoration: line-through;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c6306bf6d8aede9f6f48d8e4d9256db2.jpg?thumb=1&w=230&h=230&f=webp&q=90" alt="">
+    <div class="info">
+      <h5 class="title">小米真无线蓝牙耳机Air 2s</h5>
+      <span class="tag">全面升级，智慧真无线</span>
+    </div>
+    <div class="price">
+      <span class="newPrice">369元</span>
+      <span class="oldPrice">399元</span>
+    </div>
+  </div>
+</body>
+
+</html>
