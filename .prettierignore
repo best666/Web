@@ -1,0 +1,16 @@
+```
+/dist/*
+.local
+.output.js
+router.js
+store.js
+api.js
+vue.config.js
+/node_modules/**
+
+**/*.svg
+**/*.sh
+
+/public/*
+```
+
